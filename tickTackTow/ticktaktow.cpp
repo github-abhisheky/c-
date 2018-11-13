@@ -1,11 +1,11 @@
-// PractiseUnique.cpp : Defines the entry point for the console application.
-//
+// Copyright (c) 2018 Abhishek Yadav
+// Distributed under the MIT/X11 software license, see the accompanying
+
 
 #include "stdafx.h"
 #include <conio.h>
 #include <iostream>
 #include <string>
-#include <iomanip>
 
 
 int const total_moves = 9;
