@@ -8,19 +8,17 @@
 #include <string>
 
 
-int const total_moves = 9;
+const int total_moves = 9;
 
 
-int win_combo[16][3] = { {1,2,3},{4,5,6},{7,8,9},{1,4,7},{2,5,8},{3,6,9},{1,5,9},{3,5,7},{7,5,3},{9,5,1},{9,6,3},{8,5,2},{7,4,1},{9,8,7},{6,5,4},{3,2,1} };
+const int win_combo[16][3] = { {1,2,3},{4,5,6},{7,8,9},{1,4,7},{2,5,8},{3,6,9},{1,5,9},{3,5,7},{7,5,3},{9,5,1},{9,6,3},{8,5,2},{7,4,1},{9,8,7},{6,5,4},{3,2,1} };
 
 class Game
 {
 
-	static std::string m_array[total_moves];
+	static std::string m_mesh[total_moves];
 
 public:
-
-	Game() { }
 
 	void print_mash() const {
 
@@ -32,9 +30,9 @@ public:
 
 			if ((i % 2 == 0) && (i % 4 != 0)) {
 
-				std::cout << "    " << m_array[j++] << "    " << "|";
-				std::cout << "    " << m_array[j++] << "    " << "|";
-				std::cout << "    " << m_array[j++] << "    " << std::endl;
+				std::cout << "    " << m_mesh[j++] << "    " << "|";
+				std::cout << "    " << m_mesh[j++] << "    " << "|";
+				std::cout << "    " << m_mesh[j++] << "    " << std::endl;
 
 			}
 			else if ((i % 4 == 0) && (i != 0)) {
@@ -46,27 +44,27 @@ public:
 		}
 	}
 
-	void set_mash(const int& pos, const char& element) {
-		m_array[pos - 1] = element;
+	void set_mesh(const int& pos, const char& element) {
+		m_mesh[pos - 1] = element;
 	}
 
 	bool check_move(const int& m) {
-		if (m_array[m - 1] == "*") {
+		if (m_mesh[m - 1] == "*") {
 			return true;
 		}
 		else 
 			return false;
 	}
 
-	const char* get_mash_data(const int& d) {
-		return (m_array[d - 1].c_str());
+	const char* get_mesh_data(const int& d) {
+		return (m_mesh[d - 1].c_str());
 	}
 
 	
 };
 
 
-std::string Game::m_array[total_moves] = { "*","*","*","*","*","*","*","*","*" };
+std::string Game::m_mesh[total_moves] = { "*","*","*","*","*","*","*","*","*" };
 
 
 
@@ -84,7 +82,7 @@ public:
 	bool make_move(const int& place) {
 			if (place < 10 && place > 0) {
 				if (check_move(place)) {
-					set_mash(place, m_xo);
+					set_mesh(place, m_xo);
 					print_mash();
 					return true;
 				}
@@ -96,7 +94,7 @@ public:
 		int win_count = 0;
 		for (int i = 0; i < 16; i++) {
 			for (int j = 0; j < 3; j++) {
-				if ( *get_mash_data(win_combo[i][j]) == m_xo ) {
+				if ( *get_mesh_data(win_combo[i][j]) == m_xo ) {
 					win_count++;
 				}
 			}
